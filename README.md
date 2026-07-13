@@ -140,6 +140,19 @@ The following stages were successfully executed:
 - Layout Versus Schematic (LVS)
 
 ---
+## Note on Floorplan, Placement, and Routing Screenshots
+
+The floorplan, placement, and routing screenshots in this project appear visually similar due to the compact size of the mixed-signal design. The design consists of a small digital SPI controller integrated with a single analog hard macro (`AMUX2_3V`), resulting in minimal changes between the implementation stages.
+
+Although the layouts look similar, each screenshot was captured from a different OpenLane/OpenROAD stage:
+
+| Stage | Database Used |
+|--------|---------------|
+| Floorplan | `results/floorplan/design_mux.odb` |
+| Placement | `results/placement/design_mux.odb` |
+| Routing | `results/routing/design_mux.odb` |
+
+The routing stage additionally includes completed signal routing and power distribution, while the floorplan and placement stages primarily show the die boundary, macro placement, and standard-cell placement. Due to the small design footprint, these visual differences are subtle.
 
 ## Results
 
