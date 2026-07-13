@@ -43,7 +43,7 @@ https://github.com/praharshapm/vsdmixedsignalflow
 | Layout Viewer | KLayout |
 | LVS Tool | Netgen |
 | Hardware Description Language | Verilog |
-| AI Assistant | ChatGPT / AI Coding Assistant |
+| AI Assistant | ChatGPT / AI Coding Assistant and Claude|
 
 ---
 
