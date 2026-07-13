@@ -59,7 +59,6 @@ AI-Assisted-Mixed-Signal-RTL-to-GDSII-Flow
 ├── gds/
 ├── openlane/
 ├── prompts/
-├── reports/
 ├── docs/
 └── results/
 ```
@@ -208,13 +207,9 @@ Contains OpenLane configuration files.
 
 Contains all AI prompts used during file generation and debugging.
 
-### reports/
+### outpus/
 
-Contains generated reports including LVS, STA, DRC, and final observations.
-
-### docs/
-
-Contains screenshots, internship report, and supporting documentation.
+Contains screenshots
 
 ---
 
