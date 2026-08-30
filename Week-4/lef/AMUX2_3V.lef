@@ -1,0 +1,81 @@
+VERSION 5.8 ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+
+
+MACRO AMUX2_3V
+
+  CLASS BLOCK ;
+  FOREIGN AMUX2_3V 0 0 ;
+
+  ORIGIN 0 0 ;
+  SIZE 10 BY 10 ;
+
+
+  PIN I0
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+
+    PORT
+      LAYER met1 ;
+        RECT 0.5 1.0 1.5 2.0 ;
+    END
+
+  END I0
+
+
+  PIN I1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+
+    PORT
+      LAYER met1 ;
+        RECT 0.5 3.0 1.5 4.0 ;
+    END
+
+  END I1
+
+
+  PIN select
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+
+    PORT
+      LAYER met1 ;
+        RECT 0.5 5.0 1.5 6.0 ;
+    END
+
+  END select
+  PIN out
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+
+    PORT
+      LAYER met1 ;
+        RECT 8.5 5.0 9.5 6.0 ;
+    END
+
+  END out
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+
+    PORT
+      LAYER met1 ;
+        RECT 0.5 8.0 1.5 9.0 ;
+    END
+  END VPWR
+
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+
+    PORT
+      LAYER met1 ;
+        RECT 8.5 8.0 9.5 9.0 ;
+    END
+  END VGND
+
+END AMUX2_3V
+
+END LIBRARY
