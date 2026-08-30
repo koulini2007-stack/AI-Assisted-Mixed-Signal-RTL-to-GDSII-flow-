@@ -1,106 +1,89 @@
-# Week 5 – OpenLane Integration and Analog Macro Implementation
+# Week 5 – Design of a Double-Height 2:1 Analog MUX
 
 ## Overview
 
-Week 5 focused on continuing the RTL-to-GDSII implementation of the mixed-signal design using the OpenLane flow.
+Week 5 focuses on designing a new transistor-level double-height 2:1 analog multiplexer (MUX) using the SKY130 technology.
 
-The main objective was to integrate the `AMUX2_3V` analog hard macro into the digital design flow and prepare the required physical design files and OpenLane configuration for implementation.
+The objective is to replace the existing placeholder `AMUX2_3V` macro with a fresh analog MUX implementation. The design is first verified at the schematic and circuit-simulation level before proceeding to physical layout and digital physical-design integration.
 
-The work involved understanding the OpenLane directory structure, configuring the analog macro as a hard macro, preparing the required LEF and Liberty files, and debugging issues encountered during the physical design flow.
+The work performed so far includes transistor-level schematic design using Xschem, generation of the simulation netlist, and functional verification using ngspice with SKY130 transistor models.
+
+---
+
+## Week 5 Task
+
+The assigned task is to:
+
+- Design a new double-height 2:1 analog MUX.
+- Replace the existing placeholder `AMUX2_3V`.
+- Create and verify the transistor-level schematic using SKY130 models.
+- Simulate both select states using ngspice.
+- Generate a fresh Magic layout with the required dimensions and connectivity.
+- Perform Magic DRC until zero violations.
+- Extract the layout and perform Netgen LVS.
+- Perform post-layout ngspice simulation with parasitic extraction.
+- Compare pre-layout and post-layout functionality, delay, rise/fall time, and area.
+- Generate reusable macro views such as LEF, GDS, SPICE, Verilog black-box, Liberty, and DEF where applicable.
+- Integrate the final macro into the OpenLane physical-design flow.
+- Verify placement, routing, DRC, and LVS.
+
+The current Week 5 progress has reached the **Xschem schematic and ngspice simulation stage**.
 
 ---
 
-## Objectives
+## Objective
 
-- Understand the OpenLane RTL-to-GDSII flow.
-- Integrate the `AMUX2_3V` analog hard macro into the design.
-- Use a Verilog black-box representation for the analog macro.
-- Provide LEF information for physical implementation.
-- Provide a Liberty timing abstraction for the analog macro.
-- Configure OpenLane for macro integration.
-- Understand floorplanning, placement, routing, and power distribution.
-- Debug OpenLane configuration and physical-design issues.
-- Inspect the generated layout and implementation results.
+The main objective is to develop and verify a transistor-level 2:1 analog multiplexer using the SKY130 technology before proceeding to physical layout and RTL-to-GDSII integration.
+
+Specific objectives are:
+
+- Understand the transistor-level implementation of an analog MUX.
+- Use SKY130 device models for circuit simulation.
+- Create the schematic using Xschem.
+- Verify both MUX select states.
+- Generate simulation waveforms using ngspice.
+- Establish correct functionality before starting physical layout.
 
 ---
+
+## Design Concept
+
+The circuit is a 2:1 analog multiplexer.
+
+It has two analog inputs:
+
+- `I0`
+- `I1`
+
+and a select input:
+
+- `select`
+
+The selected signal appears at:
+
+- `out`
+
+Conceptually:
+
+```text
+             I0 ───────┐
+                       │
+                       ├────── out
+                       │
+             I1 ───────┘
+                       ▲
+                       │
+                    select
 
 ## Tools Used
 
-- OpenLane
-- OpenROAD
-- Yosys
-- Magic
-- KLayout
-- SKY130 PDK
-- Docker
-- Git/GitHub
-- AI-assisted debugging
-
----
-
-## Design Under Consideration
-
-### AMUX2_3V
-
-`AMUX2_3V` is treated as an analog hard macro in the digital physical-design flow.
-
-The macro contains the following interface:
-
-| Port | Type | Description |
-|------|------|-------------|
-| I0 | Input | First input |
-| I1 | Input | Second input |
-| select | Input | Selection control |
-| out | Output | Macro output |
-
-The analog behavior is not implemented using RTL logic. Instead, the macro is represented using a black-box Verilog model and physical/timing abstractions required by the OpenLane flow.
-
----
-
-## Files Prepared
-
-The following files were prepared for integration:
-
-- Verilog black-box model
-- LEF file
-- Liberty timing model
-- OpenLane configuration
-- Macro configuration
-- RTL source files
-- Generated implementation outputs
-
----
-
-## OpenLane Flow
-
-The implementation follows the general flow:
-
-```text
-RTL
- |
- v
-Synthesis
- |
- v
-Floorplanning
- |
- v
-Macro Integration
- |
- v
-Placement
- |
- v
-Clock Tree Synthesis
- |
- v
-Routing
- |
- v
-Power Distribution Network
- |
- v
-GDSII
- |
- v
-DRC / Layout Verification
+| Tool / Technology | Purpose |
+|---|---|
+| **Xschem** | Creating the transistor-level schematic of the 2:1 analog MUX |
+| **ngspice** | Simulating and verifying the transistor-level MUX |
+| **SKY130 PDK** | Providing the MOS transistor models and technology files |
+| **SKY130 SPICE Models** | Modeling transistor behavior during ngspice simulation |
+| **Linux / Ubuntu** | Development and simulation environment |
+| **Git** | Version control and tracking project changes |
+| **GitHub** | Project documentation, file storage, and progress tracking |
+| **AI Assistant** | Design guidance, circuit analysis, simulation debugging, and documentation |
